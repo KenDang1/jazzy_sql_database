@@ -19,7 +19,7 @@ function addArtist() {
     // Get info to send to the server
     const artistToSend = {
         name: $('#artist-name').val(), 
-        birthdate: $('#artist-born').val()
+        birthday: $('#artist-born').val()
     };
 
     console.log('Adding artist', artistToSend);

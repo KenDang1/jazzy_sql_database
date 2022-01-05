@@ -2,20 +2,18 @@ const pg = require('pg');
 const express = require('express');
 const router = express.Router();
 
-// "pool" represents our connection to database
-const pool = new pg.Pool({
-    // Name of the database
-    database:   'jazzy_sql'
-});
 
-// GET /artist endpoints
-// should return an array of artist objects
-// from database
+const pool = new pg.Pool({
+    database:   'jazzy_sql',
+    host:   'localhost',
+    port:   5432
+})
+
 router.get('/', (req, res) => {
     const queryText = `
-    SELECT name, birthday
-    FROM artists
-    ORDER BY birthday DESC;
+    SELECT title, length, released
+    FROM songs
+    ORDER BY title;
     `;
 
     pool.query(queryText)
@@ -35,16 +33,17 @@ router.post('/', (req, res) => {
     console.log('req.body is', req.body);
 
     let queryText = `
-    INSERT INTO "artists"
-	    ("name", "birthday")
+    INSERT INTO "songs"
+	    ("title", "length", "released")
     VALUES
         -- These are called "placeholders"
-        ($1, $2)
+        ($1, $2, $3)
     `;
     // Define actual values for placeholder
     let queryParams = [
-        req.body.name,
-        req.body.birthday
+        req.body.title,
+        req.body.length,
+        req.body.released
     ]
     console.log('queryText is', queryText);
     
@@ -57,5 +56,9 @@ router.post('/', (req, res) => {
             res.sendStatus(500);
         })
 });
+
+
+
+
 
 module.exports = router;
