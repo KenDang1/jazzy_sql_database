@@ -12,7 +12,7 @@ app.listen(PORT, () => {
 });
 
 // TODO - Replace static content with a database tables
-const artistList = [ 
+/*const artistList = [ 
     {
         name: 'Ella Fitzgerald',
         birthdate: '04-25-1917'
@@ -29,7 +29,7 @@ const artistList = [
         name: 'Esperanza Spalding',
         birthdate: '10-18-1984'
     },
-]
+] */
 const songList = [
     {
         title: 'Take Five',
@@ -48,6 +48,10 @@ const songList = [
     }
 ];
 
+let artistsRouter = require('./routes/artists.router')
+app.use('artist', artistsRouter);
+
+/*
 app.get('/artist', (req, res) => {
     console.log(`In /songs GET`);
     res.send(artistList);
@@ -56,7 +60,7 @@ app.get('/artist', (req, res) => {
 app.post('/artist', (req, res) => {
     artistList.push(req.body);
     res.sendStatus(201);
-});
+}); */
 
 app.get('/song', (req, res) => {
     console.log(`In /songs GET`);
