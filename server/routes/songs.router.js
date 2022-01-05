@@ -11,9 +11,9 @@ const pool = new pg.Pool({
 
 router.get('/', (req, res) => {
     const queryText = `
-    SELECT title, length, released
+    SELECT *
     FROM songs
-    ORDER BY title;
+    ORDER BY UPPER(title) ASC;
     `;
 
     pool.query(queryText)
