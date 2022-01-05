@@ -13,7 +13,7 @@ const pool = new pg.Pool({
 // from database
 router.get('/', (req, res) => {
     const queryText = `
-    SELECT name, birthday
+    SELECT name, to_char(birthday, 'Mon FMDDth YYYY') AS "birthday"
     FROM artists
     ORDER BY birthday DESC;
     `;
@@ -50,6 +50,8 @@ router.post('/', (req, res) => {
     
     pool.query(queryText, queryParams)
         .then((dbRes) => {
+            console.log('dbRes', dbRes.rows);
+            
             res.sendStatus(201);
         })
         .catch((err) => {
