@@ -36,7 +36,7 @@ router.post('/', (req, res) => {
 
     let queryText = `
     INSERT INTO "artists"
-	    ("artist_name", "year_born")
+	    ("name", "birthday")
     VALUES
         -- These are called "placeholders"
         ($1, $2)
@@ -56,6 +56,6 @@ router.post('/', (req, res) => {
             console.log('POST failed', err);
             res.sendStatus(500);
         })
-})
+});
 
 module.exports = router;
