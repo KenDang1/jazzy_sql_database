@@ -2,11 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const app = express();
-const PORT = 5000;
+
 
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 app.use(express.static('server/public'));
 
+const PORT = 5000;
 app.listen(PORT, () => {
     console.log('listening on port', PORT)
 });
@@ -48,8 +50,8 @@ const songList = [
     }
 ];
 
-let artistsRouter = require('./routes/artists.router')
-app.use('artist', artistsRouter);
+let artistsRouter = require('./routes/artists.router');
+app.use('/artist', artistsRouter);
 
 /*
 app.get('/artist', (req, res) => {

@@ -1,11 +1,11 @@
 CREATE TABLE "artists" (
     "id" SERIAL PRIMARY KEY,
-    "artist_name" varchar(80) not null,
-    "year_born" date
+    "name" varchar(80) not null,
+    "birthday" date
 );
 
 INSERT INTO "artists"
-	("artist_name", "year_born")
+	("name", "birthday")
 VALUES
 	('Ella Fitzgerald', '04-25-1917'),
 	('Dave Brubeck', '12-06-1920'),
