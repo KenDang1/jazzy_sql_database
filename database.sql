@@ -15,6 +15,14 @@ VALUES
 	('Miles Davis', '05-26-1926'),
 	('Esperanza Spalding', '10-18-1984');
 
+
+CREATE TABLE "songs" (
+	"id" SERIAL,
+	"title" varchar(255),
+	"length" varchar(10),
+	"released" date
+);
+
 INSERT INTO "songs"
 	("title", "length", "released")
 VALUES
