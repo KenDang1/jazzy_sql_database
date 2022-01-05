@@ -32,6 +32,7 @@ app.listen(PORT, () => {
         birthdate: '10-18-1984'
     },
 ] */
+/*
 const songList = [
     {
         title: 'Take Five',
@@ -48,10 +49,13 @@ const songList = [
         length: '5:17',
         released: '2012-02-01'
     }
-];
+]; */
 
 let artistsRouter = require('./routes/artists.router');
 app.use('/artist', artistsRouter);
+
+let songsRouter = require('./routes/songs.router');
+app.use('/song', songsRouter);
 
 /*
 app.get('/artist', (req, res) => {
@@ -64,6 +68,7 @@ app.post('/artist', (req, res) => {
     res.sendStatus(201);
 }); */
 
+/*
 app.get('/song', (req, res) => {
     console.log(`In /songs GET`);
     res.send(songList);
@@ -73,5 +78,5 @@ app.post('/song', (req, res) => {
     songList.push(req.body);
     res.sendStatus(201);
 });
-
+*/
 
